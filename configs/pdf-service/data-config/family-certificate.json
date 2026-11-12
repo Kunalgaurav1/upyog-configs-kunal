@@ -1,0 +1,157 @@
+{
+  "key": "family-certificate",
+  "documentType": "FAMILYCERTIFICATE",
+  "DataConfigs": {
+    "moduleName": "family-services",
+    "version": "1.0.0",
+    "baseKeyPath": "$.Families.*",
+    "entityIdPath": "$.familyId",
+    "isCommonTableBorderRequired": true,
+    "mappings": [
+      {
+        "mappings": [
+          {
+            "direct": [
+              {
+                "variable": "logoImage",
+                "url": "https://in-egov-assets.s3.ap-south-1.amazonaws.com/in.citya/logo.png",
+                "type": "image"
+              },
+              {
+                "variable": "familyId",
+                "value": {
+                  "path": "$.familyId"
+                }
+              },
+              {
+                "variable": "tenantId",
+                "value": {
+                  "path": "$.tenantId"
+                }
+              },
+              {
+                "variable": "district",
+                "value": {
+                  "path": "$.additionalDetails.district"
+                }
+              },
+              {
+                "variable": "city",
+                "value": {
+                  "path": "$.additionalDetails.city"
+                }
+              },
+              {
+                "variable": "ward",
+                "value": {
+                  "path": "$.additionalDetails.ward"
+                }
+              },
+              {
+                "variable": "address",
+                "value": {
+                  "path": "$.additionalDetails.address"
+                }
+              }
+            ]
+          },
+          {
+            "externalAPI": [
+              {
+                "path": "http://localhost:6737/family/v1/family/_search",
+                "queryParam": "tenantId=$.tenantId,familyId=$.familyId",
+                "apiRequest": null,
+                "requesttype": "POST",
+                "responseMapping": [
+                  {
+                    "variable": "familyId",
+                    "value": "$.Families[0].familyId"
+                  },
+                  {
+                    "variable": "headName",
+                    "value": "$.Families[0].headName"
+                  },
+                  {
+                    "variable": "status",
+                    "value": "$.Families[0].status"
+                  },
+                  {
+                    "variable": "familyType",
+                    "value": "$.Families[0].familyType"
+                  },
+                  {
+                    "variable": "createdDate",
+                    "value": "$.Families[0].auditDetails.createdTime",
+                    "type": "date",
+                    "format": "DD/MM/YYYY"
+                  },
+                  {
+                    "variable": "familyIncome",
+                    "value": "$.Families[0].members",
+                    "type": "function",
+                    "format": "if (!type || !Array.isArray(type)) return 'NA'; var total = 0; var found = false; for (var i = 0; i < type.length; i++) { var inc = (type[i] && type[i].memberIncome != null) ? type[i].memberIncome : (type[i] && type[i].additionalDetails && type[i].additionalDetails.memberIncome != null ? type[i].additionalDetails.memberIncome : null); if (inc != null && !isNaN(Number(inc))) { total += Number(inc); found = true; } } return found ? String(total) : 'NA';"
+                  },
+                  {
+                    "variable": "membersTable",
+                    "type": "array-column",
+                    "value": "$.Families[0].members.*",
+                    "format": {
+                      "scema": [
+                        {
+                          "value": "name"
+                        },
+                        {
+                          "value": "fatherName"
+                        },
+                        {
+                          "value": "motherName"
+                        },
+                        {
+                          "value": "dob",
+                          "type": "date",
+                          "format": "DD/MM/YYYY"
+                        },
+                        {
+                          "value": "relationshipWithHead"
+                        },
+                        {
+                          "value": "age"
+                        },
+                        {
+                          "value": "mobileNumber"
+                        },
+                        {
+                          "value": "aadhaarNumber"
+                        },
+                        {
+                          "value": "memberIncome"
+                        },
+                        {
+                          "value": "occupation"
+                        },
+                        {
+                          "value": "caste"
+                        },
+                        {
+                          "value": "isDivyang"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "qrcodeConfig": [
+              {
+                "variable": "qrcodeimage",
+                "value": "/upyog-ui/citizen/family/services?tenantId={{tenantId}}&familyId={{familyId}}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
