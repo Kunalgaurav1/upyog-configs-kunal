@@ -150,9 +150,9 @@
           ],
           "body": [
             [
-              { "text": "Name", "style": "tableHeader" },
-              { "text": "Father Name", "style": "tableHeader" },
-              { "text": "Mother Name", "style": "tableHeader" },
+              { "text": "नाम / Name", "style": "tableHeader" },
+              { "text": "पिता का नाम / Father Name", "style": "tableHeader" },
+              { "text": "माता का नाम / Mother Name", "style": "tableHeader" },
               { "text": "DOB", "style": "tableHeader" },
               { "text": "Relation with HOF", "style": "tableHeader" },
               { "text": "Age", "style": "tableHeader" },
@@ -163,7 +163,7 @@
               { "text": "Caste", "style": "tableHeader" },
               { "text": "Is Divyang (Y/N)", "style": "tableHeader" }
             ],
-            "{{#membersList}}[{\"text\":\"{{name}}\",\"style\":\"tableBody\"},{\"text\":\"{{fatherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{motherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{dob}}\",\"style\":\"tableBody\"},{\"text\":\"{{relationshipWithHead}}\",\"style\":\"tableBody\"},{\"text\":\"{{age}}\",\"style\":\"tableBody\"},{\"text\":\"{{mobileNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{aadhaarNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{memberIncome}}\",\"style\":\"tableBody\"},{\"text\":\"{{occupation}}\",\"style\":\"tableBody\"},{\"text\":\"{{caste}}\",\"style\":\"tableBody\"},{\"text\":\"{{isDivyang}}\",\"style\":\"tableBody\"}]{{/membersList}}"
+            "{{#membersList}}[{\"text\":\"{{name}}\",\"style\":\"tableBody\"},{\"text\":\"{{fatherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{motherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{dob}}\",\"style\":\"tableBody\"},{\"text\":\"{{relationshipWithHead}}\",\"style\":\"tableBody\"},{\"text\":\"{{age}}\",\"style\":\"tableBody\"},{\"text\":\"{{mobileNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{aadhaarNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{memberIncome}}\",\"style\":\"tableBody\"},{\"text\":\"{{occupation}}\",\"style\":\"tableBody\"},{\"text\":\"{{caste}}\",\"style\":\"tableBody\"},{\"text\":\"{{#isDivyang}}YES{{/isDivyang}}{{^isDivyang}}NO{{/isDivyang}}\",\"style\":\"tableBody\"}]{{/membersList}}"
           ]
         },
         "layout": {},

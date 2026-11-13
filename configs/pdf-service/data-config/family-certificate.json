@@ -66,7 +66,7 @@
           {
             "externalAPI": [
               {
-                "path": "http://upyog-family-service:8080/family/v1/family/_search",
+                "path": "http://localhost:6737/family/v1/family/_search",
                 "queryParam": "tenantId=$.tenantId,familyId=$.familyId",
                 "apiRequest": null,
                 "requesttype": "POST",
@@ -122,11 +122,11 @@
                         },
                         {
                           "variable": "fatherName",
-                          "value": "fatherName"
+                          "value": "citizenDetails.fatherName"
                         },
                         {
                           "variable": "motherName",
-                          "value": "motherName"
+                          "value": "citizenDetails.motherName"
                         },
                         {
                           "variable": "dob",
@@ -152,7 +152,7 @@
                         },
                         {
                           "variable": "memberIncome",
-                          "value": "memberIncome"
+                          "value": "income"
                         },
                         {
                           "variable": "occupation",
@@ -160,11 +160,11 @@
                         },
                         {
                           "variable": "caste",
-                          "value": "caste"
+                          "value": "citizenDetails.caste"
                         },
                         {
                           "variable": "isDivyang",
-                          "value": "isDivyang"
+                          "value": "citizenDetails.isSpeciallyAbled"
                         }
                       ]
                     }
