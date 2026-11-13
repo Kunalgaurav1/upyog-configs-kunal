@@ -52,14 +52,6 @@
                 "value": {
                   "path": "$.additionalDetails.address"
                 }
-              },
-              {
-                "variable": "familyIncome",
-                "value": {
-                  "path": "$.members"
-                },
-                "type": "function",
-                "format": "if (!type || !Array.isArray(type)) return 'NA'; var total = 0; var found = false; for (var i = 0; i < type.length; i++) { var inc = (type[i] && type[i].memberIncome != null) ? type[i].memberIncome : (type[i] && type[i].additionalDetails && type[i].additionalDetails.memberIncome != null ? type[i].additionalDetails.memberIncome : null); if (inc != null && !isNaN(Number(inc))) { total += Number(inc); found = true; } } return found ? String(total) : 'NA';"
               }
             ]
           },
@@ -152,11 +144,11 @@
                         },
                         {
                           "variable": "memberIncome",
-                          "value": "income"
+                          "value": "income.annualIncome"
                         },
                         {
                           "variable": "occupation",
-                          "value": "occupation"
+                          "value": "income.occupation"
                         },
                         {
                           "variable": "caste",
@@ -178,6 +170,14 @@
               {
                 "variable": "qrcodeimage",
                 "value": "/upyog-ui/citizen/family/services?tenantId={{tenantId}}&familyId={{familyId}}"
+              }
+            ]
+          },
+          {
+            "derived": [
+              {
+                "variable": "familyIncome",
+                "formula": "0 {{#membersList}}+{{memberIncome}}{{/membersList}}"
               }
             ]
           }
