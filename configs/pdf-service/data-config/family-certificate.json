@@ -66,7 +66,7 @@
           {
             "externalAPI": [
               {
-                "path": "http://localhost:6737/family/v1/family/_search",
+                "path": "http://upyog-family-service:8080/family/v1/family/_search",
                 "queryParam": "tenantId=$.tenantId,familyId=$.familyId",
                 "apiRequest": null,
                 "requesttype": "POST",
