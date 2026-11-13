@@ -52,6 +52,14 @@
                 "value": {
                   "path": "$.additionalDetails.address"
                 }
+              },
+              {
+                "variable": "familyIncome",
+                "value": {
+                  "path": "$.members"
+                },
+                "type": "function",
+                "format": "if (!type || !Array.isArray(type)) return 'NA'; var total = 0; var found = false; for (var i = 0; i < type.length; i++) { var inc = (type[i] && type[i].memberIncome != null) ? type[i].memberIncome : (type[i] && type[i].additionalDetails && type[i].additionalDetails.memberIncome != null ? type[i].additionalDetails.memberIncome : null); if (inc != null && !isNaN(Number(inc))) { total += Number(inc); found = true; } } return found ? String(total) : 'NA';"
               }
             ]
           },
@@ -86,53 +94,76 @@
                     "format": "DD/MM/YYYY"
                   },
                   {
-                    "variable": "familyIncome",
-                    "value": "$.Families[0].members",
-                    "type": "function",
-                    "format": "if (!type || !Array.isArray(type)) return 'NA'; var total = 0; var found = false; for (var i = 0; i < type.length; i++) { var inc = (type[i] && type[i].memberIncome != null) ? type[i].memberIncome : (type[i] && type[i].additionalDetails && type[i].additionalDetails.memberIncome != null ? type[i].additionalDetails.memberIncome : null); if (inc != null && !isNaN(Number(inc))) { total += Number(inc); found = true; } } return found ? String(total) : 'NA';"
+                    "variable": "district",
+                    "value": "$.Families[0].additionalDetails.district"
                   },
                   {
-                    "variable": "membersTable",
-                    "type": "array-column",
+                    "variable": "city",
+                    "value": "$.Families[0].additionalDetails.city"
+                  },
+                  {
+                    "variable": "ward",
+                    "value": "$.Families[0].additionalDetails.ward"
+                  },
+                  {
+                    "variable": "address",
+                    "value": "$.Families[0].additionalDetails.address"
+                  },
+                  {
+                    "variable": "membersList",
                     "value": "$.Families[0].members.*",
+                    "type": "array",
                     "format": {
+                      "type": "string",
                       "scema": [
                         {
+                          "variable": "name",
                           "value": "name"
                         },
                         {
+                          "variable": "fatherName",
                           "value": "fatherName"
                         },
                         {
+                          "variable": "motherName",
                           "value": "motherName"
                         },
                         {
+                          "variable": "dob",
                           "value": "dob",
                           "type": "date",
                           "format": "DD/MM/YYYY"
                         },
                         {
+                          "variable": "relationshipWithHead",
                           "value": "relationshipWithHead"
                         },
                         {
+                          "variable": "age",
                           "value": "age"
                         },
                         {
+                          "variable": "mobileNumber",
                           "value": "mobileNumber"
                         },
                         {
+                          "variable": "aadhaarNumber",
                           "value": "aadhaarNumber"
                         },
                         {
+                          "variable": "memberIncome",
                           "value": "memberIncome"
                         },
                         {
+                          "variable": "occupation",
                           "value": "occupation"
                         },
                         {
+                          "variable": "caste",
                           "value": "caste"
                         },
                         {
+                          "variable": "isDivyang",
                           "value": "isDivyang"
                         }
                       ]

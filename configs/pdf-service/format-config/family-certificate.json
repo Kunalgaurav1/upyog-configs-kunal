@@ -67,7 +67,7 @@
               },
               {
                 "text": [
-                  { "text": "प्रिंट तारीख / Print Date: ", "bold": true },
+                  { "text": "जारी करने की तिथि / Issue Date: ", "bold": true },
                   { "text": "{{createdDate}}" }
                 ],
                 "alignment": "right",
@@ -157,13 +157,13 @@
               { "text": "Relation with HOF", "style": "tableHeader" },
               { "text": "Age", "style": "tableHeader" },
               { "text": "Mobile Number", "style": "tableHeader" },
-              { "text": "Aadhar", "style": "tableHeader" },
+              { "text": "Aadhaar Number", "style": "tableHeader" },
               { "text": "Member Income", "style": "tableHeader" },
               { "text": "Occupation", "style": "tableHeader" },
               { "text": "Caste", "style": "tableHeader" },
-              { "text": "Is Divyang", "style": "tableHeader" }
+              { "text": "Is Divyang (Y/N)", "style": "tableHeader" }
             ],
-            "{{membersTable}}"
+            "{{#membersList}}[{\"text\":\"{{name}}\",\"style\":\"tableBody\"},{\"text\":\"{{fatherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{motherName}}\",\"style\":\"tableBody\"},{\"text\":\"{{dob}}\",\"style\":\"tableBody\"},{\"text\":\"{{relationshipWithHead}}\",\"style\":\"tableBody\"},{\"text\":\"{{age}}\",\"style\":\"tableBody\"},{\"text\":\"{{mobileNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{aadhaarNumber}}\",\"style\":\"tableBody\"},{\"text\":\"{{memberIncome}}\",\"style\":\"tableBody\"},{\"text\":\"{{occupation}}\",\"style\":\"tableBody\"},{\"text\":\"{{caste}}\",\"style\":\"tableBody\"},{\"text\":\"{{isDivyang}}\",\"style\":\"tableBody\"}]{{/membersList}}"
           ]
         },
         "layout": {},
@@ -192,7 +192,7 @@
           {
             "stack": [
               {
-                "text": "Applicant Signature",
+                "text": "Parivar Pehchan Authority",
                 "bold": true,
                 "alignment": "center",
                 "fontSize": 8.5
@@ -231,6 +231,10 @@
         "fontSize": 7.5,
         "alignment": "center",
         "fillColor": "#F0F0F0"
+      },
+      "tableBody": {
+        "fontSize": 7,
+        "alignment": "center"
       }
     }
   }
